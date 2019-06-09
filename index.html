@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+<body>
+
+  <div id="redirecting">
+    <span id="title"></span>
+    <span id="store"> 앱스토어로</span>
+    <span id="moving"> 이동중...</span>
+  </div>
+
+</body>
+
+</html>
+
+<script>
+  var currentUrl = window.location.href;
+  var url = new URL(currentUrl);
+  var title = url.searchParams.get("title");
+  var play_store_url = url.searchParams.get("play_store_url");
+  var apple_app_store_url = url.searchParams.get("apple_app_store_url");
+  document.getElementById("title").innerHTML = title;
+
+  var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+  if (/android/i.test(userAgent) && play_store_url) {
+    window.location.href = play_store_url;
+  } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream && apple_app_store_url) {
+    window.location.href = apple_app_store_url;
+  } else {
+    document.getElementById("title").innerHTML = "";
+    document.getElementById("store").innerHTML = "";
+    document.getElementById("moving").innerHTML = "리디렉트 대상이 없습니다.";
+  }
+</script>
