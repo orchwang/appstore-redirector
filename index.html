@@ -17,11 +17,9 @@
 </html>
 
 <script>
-  var currentUrl = window.location.href;
-  var url = new URL(currentUrl);
-  var title = url.searchParams.get("title");
-  var play_store_url = url.searchParams.get("play_store_url");
-  var apple_app_store_url = url.searchParams.get("apple_app_store_url");
+  var title = "title";
+  var play_store_url = "Target PlayStore URL";
+  var apple_app_store_url = "Target IOS App Store URL";
   document.getElementById("title").innerHTML = title;
 
   var userAgent = navigator.userAgent || navigator.vendor || window.opera;
